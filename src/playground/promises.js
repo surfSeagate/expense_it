@@ -1,9 +1,9 @@
 
 const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    //resolve('this is my resolved data');
-    reject('something went wrong');
-  }, 9000);
+    resolve('this is my first promise');
+    //reject('something went wrong');
+  }, 3000);
 
 });
 
@@ -11,6 +11,16 @@ console.log('before')
 //then registers a callback.
 promise.then((data) => {
   console.log('1', data);
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('this is my other promise');
+      //reject('something went wrong');
+    }, 3000);
+
+  });
+}).then((str) => {
+  console.log('did this chain then run?', str)
 }).catch((error) => {
   console.log('error: ', error);
 });

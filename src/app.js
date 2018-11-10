@@ -12,7 +12,7 @@ import { setTextFilter } from './actions/filters';
 import getVisibleExpenses from './selectors/expenses'
 import 'react-dates/lib/css/_datepicker.css';
 import './firebase/firebase';
-//import promises from './playground/promises'; for testing playground promises.js
+//import promises from './playground/promises'; //testing
 
 
 const store = configureStore();
