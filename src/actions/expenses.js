@@ -8,7 +8,7 @@ import database from '../firebase/firebase';
 // redux stores changes
 
 // with firebase ...
-// compoents calls action generator
+// components calls action generator
 // action generator returns a function
 // component dispatches funtion (?)
 // function runs(has the ability to dispatch other actions, whatever it wants)
@@ -52,3 +52,32 @@ export const editExpense = (id, updates) => ({
   updates
 
 });
+
+
+//SET_EXPENSE
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+});
+
+
+
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    return database.ref('expenses').once('value').then((snapshot) => {
+      const expenses = [];
+      snapshot.forEach((childSnapshot) => {
+        expenses.push({
+          id: childSnapshot.key,
+          ...childSnapshot.val()
+        });
+      });
+      dispatch(setExpenses(expenses));
+    });
+  };
+};
+
+
+
+
+
