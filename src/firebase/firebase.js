@@ -11,7 +11,7 @@ const config = {
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
 
 };
-
+// comment to reset
 
 firebase.initializeApp(config);
 const database = firebase.database();
